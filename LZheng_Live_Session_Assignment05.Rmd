@@ -72,13 +72,15 @@ sum(final$Total)
 b.Sort the data by Total.  What are the top 10 most popular names?
 ```{r}
 final_sorted = final[order(final$Total, decreasing = TRUE), ]
+final_sorted = final_sorted[, c(1,2,5)]
 head(final_sorted, 10)
+
 ```
 
 c.The client is expecting a girl!  Omit boys and give the top 10 most popular girl's names.
 
 ```{r}
-final_sorted_girl = final_sorted[order(final_sorted$Gender), c(1,2,5)]
+final_sorted_girl = final_sorted[order(final_sorted$Gender),]
 head(final_sorted_girl, 10)
 ```
 
@@ -91,5 +93,8 @@ write.csv(final_sorted_girl[c(1:10), c(1, 3)], file="top10girlname.csv")
 ##4.	Upload to GitHub (10 points): 
 Push at minimum your RMarkdown for this homework assignment and a Codebook to one of your GitHub repositories (you might place this in a Homework repo like last week).  The Codebook should contain a short definition of each object you create, and if creating multiple files, which file it is contained in.  You are welcome and encouraged to add other files-just make sure you have a description and directions that are helpful for the grader.
 ```{r}
+#library(dataMaid)
+#makeCodebook(final_sorted, vol = "", reportTitle = NULL, file = NULL)
+#makeCodebook(final_sorted_girl, vol = "", reportTitle = NULL, file = NULL)
 # Github: https://github.com/liminzheng/MSDS6306HW05
 ```
